@@ -1,0 +1,9 @@
+git and github presentation on merge conflict
+
+this is a merge conflict creation line
+this is line 3 from the mater branch
+adding this line to differentiate master and sample branch
+
+this is the second merge line from sample branch
+this will create the merge conflict from both branches
+

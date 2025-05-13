@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git & GitHub Presentation</title>
+    <style>
+
+           body {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 400;
+    font-style: italic;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    /* display: flex; ❌ Remove this */
+}
+
+        .sidebar {
+            width: 220px;
+            background-color: rgb(109, 255, 243);
+
+            background-color: rgb(109, 255, 243); /* Light blueish for sidebar */
+
+            padding: 20px;
+            height: 100vh;
+            position: fixed;
+            overflow-y: auto;
+        }
+
+        .sidebar h2 {
+            color: #00008B;
+            text-align: center;
+            margin-top: 0;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .sidebar ul li a {
+            display: block;
+            color: #333;
+            padding: 8px 0;
+            text-decoration: none;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .sidebar ul li a:hover {
+            color: #00008B;
+            background-color: #d0d0f0;
+        }
+
+        .main-content {
+            flex-grow: 1;
+            padding: 20px 40px;
+            margin-left: 260px;
+            background-color: #fff;
+        }
+
+        h1, h2, h3 {
+            color: #a12c63;
+
+            color: #a12c63; /* Medium Blue for headings */
+
+        }
+
+        p, li {
+            color: #000000;
+            margin-bottom: 1em;
+        }
+
+        .code {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #f0f0f0;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-size: 0.9em;
+        }
+
+        .image-placeholder, .slideshow-placeholder {
+
+             
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+            background-color: rgb(109, 255, 243);
+            color: #555;
+        }
+
+        .slideshow-placeholder {
+    position: relative;
+    width: 100%;
+    max-width: 700px;
+    margin: 20px 0; /* ✅ Left-aligned now */
+    background-color: #e0ffff;
+    padding: 10px;
+}
+
+        .slide {
+            display: none;
+            width: 100%;
+            text-align: center;
+        }
+
+        .slide img {
+            width: 100%;
+            height: auto;
+        }
+
+        .slide.active {
+            display: block;
+        }
+
+        .slideshow-buttons {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .slideshow-buttons button {
+            padding: 8px 16px;
+            margin: 0 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+     <aside class="sidebar">
+        <h2>Navigation</h2>
+        <ul>
+            <li><a href="#intro">Introduction</a></li>
+            <li><a href="#why-vcs">Why Version Control?</a></li>
+            <li><a href="#what-is-git">What is Git?</a></li>
+            <li><a href="#git-workflow">Basic Git Workflow</a></li>
+            <li><a href="#what-is-github">What is GitHub?</a></li>
+            <li><a href="#github-workflow">Collaborative GitHub Workflow</a></li>
+            <li><a href="#devops-lifecycle">Git/GitHub in DevOps</a></li>
+            <li><a href="#benefits">Benefits for DevOps</a></li>
+            <li><a href="#demo">Live Demo Ideas</a></li>
+            <li><a href="#best-practices">Best Practices</a></li>
+            <li><a href="#summary">Summary</a></li>
+        </ul>
+    </aside>
+
+    <main class="main-content">
+        <header>
+            <h1>Git & GitHub</h1>
+            <p>Presented by: catherine Mwaura | Course: DevOps | Date: 11/05/2025</p>
+        </header>
+
+        <section id="intro">
+            <h2>Introduction</h2>
+            <p>This presentation explores Git and GitHub, two fundamental tools that form the backbone of modern software development and DevOps practices. We'll cover why version control is essential, dive into the core concepts of Git, understand how GitHub enhances collaboration, and see how these tools integrate into the DevOps lifecycle.</p>
+        </section>
+
+        <section id="why-vcs">
+            <h2>The "Problem": Why Version Control?</h2>
+            <p>Imagine managing a project without a structured way to track changes. You might end up with confusing file names like <code class="code">project_final.doc</code>, <code class="code">project_final_v2.doc</code>, or even <code class="code">project_final_REALLY_final.doc</code>. This chaos leads to difficulties in tracking modifications, reverting to stable states, and collaborating effectively, often resulting in overwritten work. Version Control Systems (VCS) solve these problems by providing a systematic approach to managing changes to code and other project files over time.</p>
+            <div class="image-placeholder">
+                <img src="./VSC.png" alt="Chaotic file versions screenshot" style="max: width 200px;; height:200px;">
+               
+            </div>
+        </section>
+
+        <section id="what-is-git">
+            <h2>What is Git? </h2>
+
+
+            <p>Git, created by Linus Torvalds, is a powerful **Distributed Version Control System (DVCS)**. Being "distributed" means every developer has a complete copy of the project repository, including its entire history, allowing them to work offline and independently. Git is renowned for its speed, efficiency, strong support for non-linear development through branching and merging, and its focus on data integrity. Key concepts include the repository (your project's home), commits (snapshots of your project), the working directory (your current files), the staging area (where you prepare changes for a commit), and branches (independent lines of development).</p>
+
+            <p>Git, created by Linus Torvalds, is a powerful **Distributed Version Control System (DVCS)**. Being "distributed" means every developer has a complete copy of the project repository, including its entire history, allowing them to work offline and independently. Git is renowned for its speed, efficiency, strong support for non-linear development through branching and merging, and its focus on data integrity. Key concepts include the repository (your project's home), commits (snapshots of your project), the working directory (your current files), the staging area (where you prepare changes for a commit), and branches (independent lines of development.</p>
+
+
+            <p>Git, created by Linus Torvalds, is a powerful **Distributed Version Control System (DVCS)**. Being "distributed" means every developer has a complete copy of the project repository, including its entire history, allowing them to work offline and independently. Git is renowned for its speed, efficiency, strong support for non-linear development through branching and merging, and its focus on data integrity. Key concepts include the repository (your project's home), commits (snapshots of your project), the working directory (your current files), the staging area (where you prepare changes for a commit), and branches (independent lines of development).</p>
+
+        </section>
+
+        <section id="git-workflow">
+            <h2>Basic Git Workflow </h2>
+            <p>A typical local Git workflow involves initializing a repository (<code class="code">git init</code>) or cloning an existing one (<code class="code">git clone</code>). As you make changes in your working directory, you use <code class="code">git add</code> to move those changes to the staging area. Once you're satisfied with the staged changes, you commit them to the repository using <code class="code">git commit -m "Descriptive message"</code>. You can view the project's history with <code class="code">git log</code>, create new lines of development with <code class="code">git branch</code>, and switch between them using <code class="code">git checkout</code> or <code class="code">git switch</code>. Finally, <code class="code">git merge</code> is used to combine changes from different branches.</p>
+            <div class="image-placeholder">
+                <div style="width: 400px; text-align: center;">
+  <img src="./pushing.png" alt="pushing" style="width: 400px; height: 400px;">
+  <p>pushing to GitHub</p>
+</div> 
+                 <div style="width: 400px; text-align: center;">
+  <img src="./Branch.png" alt="pushing" style="width: 400px; height: 400px;">
+  <p>creation of a new branch</p>
+</div>
+                   <div style="width: 100%; text-align: center;">
+  <img src="./Branch commit.png" alt="pushing" style="width: 100%; height: 100%;">
+  <p>Commiting a new brach to save changes</p>
+</div>
+            </div>
+        </section>
+
+        <section id="what-is-github">
+            <h2>What is GitHub? </h2>
+            <p>GitHub is a web-based hosting service for Git repositories; it is not Git itself but a platform that leverages Git. While it excels at storing your code, GitHub offers much more: robust tools for collaboration like Pull Requests and code reviews, issue tracking for managing bugs and features, project management features like Kanban boards, and powerful automation capabilities through GitHub Actions (for CI/CD). It also facilitates social coding through forking (creating personal copies of others' repos) and discovery.</p>
+            <div style="width: 100%; text-align: center;">
+  <img src="./github.png" alt="pushing" style="width: 100%; height: 100%;">
+  <p>Github Homepage</p>
+</div>
+        </section>
+
+        <section id="github-workflow">
+            <h2>Collaborative Workflow with GitHub</h2>
+            <p>Collaboration using GitHub typically starts with cloning a repository or forking it if you're contributing to an external project. You then create a feature branch locally (e.g., <code class="code">git checkout -b feature/new-idea</code>) to work on your changes in isolation. After making and committing your changes, you push your branch to GitHub (<code class="code">git push origin feature/new-idea</code>). On GitHub, you create a Pull Request (PR) to propose merging your changes into the main project branch. This PR becomes a hub for code review and discussion among team members. Once approved, the PR is merged, integrating your contributions. Other team members then pull these latest changes to their local repositories (<code class="code">git pull origin main</code>).</p>
+            
+            </div>
+        </section>
+
+        <section id="devops-lifecycle">
+            <h2>Git & GitHub in the DevOps Lifecycle</h2>
+            <p>Git and GitHub are integral to nearly every stage of the DevOps lifecycle. During Planning, GitHub Issues track features and tasks. In the Code phase, developers use Git for version control. Pushing code or creating PRs can trigger automated Build and Test processes via CI/CD tools like GitHub Actions. Git tags mark specific versions for Release, and CD pipelines, often triggered by merges, handle Deployment. Even in Operate & Monitor, Infrastructure as Code (IaC) managed in Git allows for versioned, reviewable infrastructure changes and easier rollbacks, closing the feedback loop by logging operational issues back into GitHub Issues.</p>
+        </section>
+
+        <section id="benefits">
+            <h2>Key Benefits for DevOps</h2>
+            <p>The adoption of Git and GitHub in a DevOps environment brings significant benefits. They enhance collaboration and transparency, as everyone can see the code history and discussions. Automation is a key driver, with Git events triggering CI/CD pipelines. This leads to improved traceability for audits and reproducibility of builds and environments. The ability to perform rollbacks to previous stable versions is crucial for mitigating deployment risks. Furthermore, managing Infrastructure as Code in Git enables versioning and review for infrastructure changes, all contributing to faster, more reliable release cycles.</p>
+        </section>
+         <section id="best-practices">
+  <h2>Best Practices</h2>
+  <p>Adopt meaningful commit messages, use branching strategies like Git Flow or trunk-based development, review code via Pull Requests before merging, and keep commits atomic and focused. Regularly pull the latest changes and resolve conflicts proactively. Automate where possible and use `.gitignore` to avoid cluttering the repo.</p>
+</section>
+
+<section id="summary">
+  <h2>Summary</h2>
+  <p>Git and GitHub streamline collaboration, versioning, and DevOps automation. Mastering the Git workflow, understanding GitHub's features, and applying best practices ensures cleaner codebases, faster releases, and more maintainable software projects.</p>
+</section>
+
+
+        <section id="demo">
+
+  <h2>Live Demo </h2>
+  <p>
+    A practical demonstration with screenshots attached: 
+    1. Create a new repository on GitHub. 2. Clone it locally. 3. Create a file, add, and commit it.
+    4. Push changes to GitHub. 5. Create a new feature branch. 6. Make changes, commit, and push the branch.
+    7. Create a Pull Request on GitHub. 8. Merge the Pull Request. 9. Pull the merged changes back to the local main branch.
+   
+  </p>
+  <div class="slideshow-placeholder">
+    <div class="slide">
+      <img src="./pushing.png" alt="Pushing to github">
+      <p>Pushing to github</p>
+    </div>
+    <div class="slide">
+      <img src="./Branch.png" alt="Creating new branch">
+      <p>Creating new branch</p>
+    </div>
+    <div class="slide">
+      <img src="./Branch commit.png" alt="Committing new branch">
+      <p>Committing new branch</p>
+    </div>
+    <div class="slide">
+      <img src="./Merge1.png" alt="Merging new branch with Master branch">
+      <p>Merging new branch with Master branch</p>
+    </div>
+    <div class="slide">
+      <img src="./Merge2.png" alt="Merging new branch with Master branch">
+      <p>Merging new branch with Master branch</p>
+    </div>
+    <div class="slide">
+      <img src="./Merge3.png" alt="Merging new branch with Master branch">
+      <p>Merging new branch with Master branch</p>
+    </div>
+    <div class="slide">
+      <img src="./Merge4.png" alt="Merging new branch with Master branch">
+      <p>Merging new branch with Master branch</p>
+    </div>
+    <div class="slide">
+      <img src="./7.png" alt="Created a merge conflict">
+      <p>Created a merge conflict</p>
+    </div>
+    <div class="slide">
+      <img src="./8.png" alt="Created a merge conflict">
+      <p>Created a merge conflict</p>
+    </div>
+    <div class="slide">
+      <img src="./9.png" alt="Created a merge conflict">
+      <p>Created a merge conflict</p>
+    </div>
+    <div class="slide">
+      <img src="./10.png" alt="Resolved merge conflict">
+      <p>Resolved merge conflict</p>
+    </div>
+    <div class="slide">
+      <img src=".1.png" alt="Received pull request">
+      <p>Received pull request</p>
+    </div>
+    <div class="slide">
+      <img src="./2.png" alt="Merging Pull Request">
+      <p>Merging Pull Request</p>
+    </div>
+    <div class="slide">
+      <img src="./3.png" alt="Confirming Pull Request data">
+      <p>Confirming Pull Request data</p>
+    </div>
+    <div class="slide">
+      <img src="./4.png" alt="Merged Pull Request">
+      <p>Merged Pull Request</p>
+    </div>
+
+    <div class="slideshow-buttons">
+      <button onclick="prevSlide()">⏮ Prev</button>
+      <button onclick="nextSlide()">Next ⏭</button>
+    </div>
+  </div>
+</section>
+
+
+          
+
+      
+        <footer>
+            <p>&copy; [@025] [Catherine mwaura]. Presentation for [DevOps Course].</p>
+            
+        </footer>
+    </main>
+
+    <!-- JS slideshow script -->
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === index);
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        // Show first slide
+        showSlide(currentSlide);
+    </script>
+</body>
+</html>
